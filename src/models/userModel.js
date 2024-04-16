@@ -51,10 +51,10 @@ exports.createUser = async (userData) => {
 
 exports.updateUser = async (userId, userData) => {
     return new Promise((resolve, reject) => {
-        const { name, last_name, position, user } = userData;
+        const { name, last_name, position, user, password } = userData;
 
-        const sql = 'UPDATE user SET first_name=?, last_name=?, user=? WHERE user_id=?';
-        db.query(sql, [name, last_name, user, position, userId], (error, results) => {
+        const sql = 'UPDATE user SET name=?, last_name=?, position=?, user=?,  password=? WHERE user_id=?';
+        db.query(sql, [name, last_name,position, user, password, userId], (error, results) => {
             if (error) {
                 reject(error);
             } else {
