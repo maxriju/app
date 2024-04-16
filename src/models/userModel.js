@@ -3,7 +3,7 @@ const db = require('../config/dbConfig');
 
 exports.getAllUsers = async (params = {}) => {
     return new Promise((resolve, reject) => {
-        let query = "SELECT * FROM user WHERE 1=1";
+        let query = "SELECT * FROM users WHERE 1=1";
         const values = [];
 
         if (params.status) {
@@ -37,7 +37,7 @@ exports.createUser = async (userData) => {
 
         const {name, last_name, position, user, password, status} = userData;
 
-        const sql = 'INSERT INTO user (name, last_name, position, user, password, status) VALUES (?, ?, ?, ?, ?, ?)';
+        const sql = 'INSERT INTO users (name, last_name, position, user, password, status) VALUES (?, ?, ?, ?, ?, ?)';
         db.query(sql, [name, last_name, position, user, password, status], (error, results) => {
             if (error) {
                 reject(error);
@@ -53,7 +53,7 @@ exports.updateUser = async (userId, userData) => {
     return new Promise((resolve, reject) => {
         const { name, last_name, position, user, password } = userData;
 
-        const sql = 'UPDATE user SET name=?, last_name=?, position=?, user=?,  password=? WHERE user_id=?';
+        const sql = 'UPDATE users SET name=?, last_name=?, position=?, user=?,  password=? WHERE user_id=?';
         db.query(sql, [name, last_name,position, user, password, userId], (error, results) => {
             if (error) {
                 reject(error);
@@ -66,7 +66,7 @@ exports.updateUser = async (userId, userData) => {
 
 exports.deleteUser = async (userId) => {
     return new Promise((resolve, reject) => {
-        const sql = 'DELETE FROM user WHERE user_id=?';
+        const sql = 'DELETE FROM users WHERE user_id=?';
         db.query(sql, [userId], (error, results) => {
             if (error) {
                 reject(error);
