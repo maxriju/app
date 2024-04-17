@@ -1,7 +1,8 @@
 const userRoutes = require('./src/routes/userRoutes');
 const empleadoRoute = require('./src/routes/empleadosRoutes');
-const hijosEmpladoRuote = require('./src/routes/hiijosEmpleadoRoute');
+const hijosEmpladoRuote = require('./src/routes/hiijosEmpleadoRoutes');
 const formacionRoute = require('./src/routes/formacionRoutes');
+const experienciaRoute = require('./src/routes/experienciaLaboralRoutes');
 
 const errorHandler = require('./src/middleware/errorMiddleware');
 
@@ -17,6 +18,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/empleados', empleadoRoute);
 app.use('/api/hijos-empleado', hijosEmpladoRuote);
 app.use('/api/formacion-empleados', formacionRoute);
+app.use('/api/experienca-empleado', experienciaRoute),
 
 app.use(errorHandler);
 

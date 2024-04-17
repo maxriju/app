@@ -15,15 +15,15 @@ exports.getAllFormacionEmpleado = async (empleadoId) => {
     });
 }
 
-exports.createFormacion = async (empleado_id, userData) => {
+exports.createFormacion = async (empleado_id, formacionData) => {
     return new Promise((resolve, reject) => {
         
-        if (!userData) {
+        if (!formacionData) {
             reject("No employee training data will be provided.");
             return;
         }
 
-        const {tipo, fecha, lugar, descripcion} = userData;
+        const {tipo, fecha, lugar, descripcion} = formacionData;
 
         const sql = 'INSERT INTO formacion (id_empleado, tipo, fecha, lugar, descripcion) VALUES (?, ?, ?, ?, ?)';
         db.query(sql, [empleado_id, tipo, fecha, lugar, descripcion], (error, results) => {
@@ -37,9 +37,9 @@ exports.createFormacion = async (empleado_id, userData) => {
     });
 };
 
-exports.updateFormacion= async (formacionId, userData) => {
+exports.updateFormacion= async (formacionId, formacionData) => {
     return new Promise((resolve, reject) => {
-        const { tipo, fecha, lugar, descripcion} = userData;
+        const { tipo, fecha, lugar, descripcion} = formacionData;
 
         const sql = 'UPDATE formacion SET tipo=?, fecha=?, lugar=?, descripcion=? WHERE id=?';
         db.query(sql, [tipo, fecha, lugar, descripcion, formacionId], (error, results) => {
@@ -50,4 +50,4 @@ exports.updateFormacion= async (formacionId, userData) => {
             }
         });
     });
-};
+};  
