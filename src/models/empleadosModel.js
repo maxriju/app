@@ -1,5 +1,4 @@
 const db = require('../config/dbConfig');
-//const bcrypt = require('bcrypt');
 
 exports.getAllEmpleados = async (params = {}) => {
     return new Promise((resolve, reject) => {

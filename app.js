@@ -1,6 +1,9 @@
 const userRoutes = require('./src/routes/userRoutes');
-const errorHandler = require('./src/middleware/errorMiddleware');
 const empleadoRoute = require('./src/routes/empleadosRoutes');
+const hijosEmpladoRuote = require('./src/routes/hiijosEmpleadoRoute');
+
+const errorHandler = require('./src/middleware/errorMiddleware');
+
 const express = require('express');
 const app = express();
 app.use(express.json());
@@ -11,6 +14,7 @@ app.use(express.json());
 
 app.use('/api/users', userRoutes);
 app.use('/api/empleados', empleadoRoute);
+app.use('/api/hijos-empleado', hijosEmpladoRuote);
 
 app.use(errorHandler);
 
