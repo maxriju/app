@@ -30,7 +30,7 @@ exports.createEmpleado = async (empleadoData) => {
     return new Promise((resolve, reject) => {
         
         if (!empleadoData) {
-            reject("No empleado data will be provided.");
+            reject("No employee data will be provided.");
             return;
         }
 

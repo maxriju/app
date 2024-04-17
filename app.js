@@ -1,6 +1,7 @@
 const userRoutes = require('./src/routes/userRoutes');
 const empleadoRoute = require('./src/routes/empleadosRoutes');
 const hijosEmpladoRuote = require('./src/routes/hiijosEmpleadoRoute');
+const formacionRoute = require('./src/routes/formacionRoutes');
 
 const errorHandler = require('./src/middleware/errorMiddleware');
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/empleados', empleadoRoute);
 app.use('/api/hijos-empleado', hijosEmpladoRuote);
+app.use('/api/formacion-empleados', formacionRoute);
 
 app.use(errorHandler);
 

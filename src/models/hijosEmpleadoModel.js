@@ -51,7 +51,7 @@ exports.createHijo = async (empleado_id, userData) => {
     return new Promise((resolve, reject) => {
         
         if (!userData) {
-            reject("No user data will be provided.");
+            reject("No employee son data will be provided.");
             return;
         }
 
