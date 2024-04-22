@@ -1,18 +1,23 @@
 const db = require('../config/dbConfig');
 
+//AB = altas y bajas de los empleados
+//E= empleado
 
-exports.getAllAltasBajas = async(empleadoId)=>{
+exports.getAllAB = (empleadoId)=>{
     return new Promise((resolve, reject)=>{
+        try{
+            let query = "SELECT * FROM ingresos_bajas WHERE id_empleado=?";
 
-        let query = "SELECT * FROM ingresos_bajas WHERE id_empleado=?";
-
-        db.query(query, [empleadoId], (error, results) => {
-            if (error) {
-                reject(error);
-            } else {
-                resolve(results);
-            }
-        });
+            db.query(query, [empleadoId], (error, results) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(results || []);
+                }
+            });
+        } catch (error) {
+            reject(error);
+        }
     });
 }
 
@@ -25,9 +30,9 @@ exports.createAltaE = async (empleado_id, altaData) => {
             return;
         }
 
-        const {fecha_ingreso} = experienciaData;
+        const {fecha_ingreso} = altaData;
 
-        const sql = 'INSERT INTO experiencia_laboral (id_empleado, fecha_ingreso) VALUES (?, ?)';
+        const sql = 'INSERT INTO ingresos_bajas (id_empleado, fecha_ingreso) VALUES (?, ?)';
         db.query(sql, [empleado_id, fecha_ingreso], (error, results) => {
             if (error) {
                 reject(error);
@@ -39,12 +44,12 @@ exports.createAltaE = async (empleado_id, altaData) => {
     });
 };
 
-exports.updateAltaABaja= async (altaBajaId, bajaData) => {
+exports.updateAB= async (altaBajaId, bajaData) => {
     return new Promise((resolve, reject) => {
-        const {fecha_baja, descripcion, motivo} = experienciaData;
+        const {fecha_baja, descripcion, motivo} = bajaData;
 
-        const sql = 'UPDATE experiencia_laboral SET descripcion=? WHERE id=?';
-        db.query(sql, [fecha_baja, descripcion, motivo, experienciaId], (error, results) => {
+        const sql = 'UPDATE ingresos_bajas SET fecha_baja=?, descripcion=?, motivo=? WHERE id=?';
+        db.query(sql, [fecha_baja, descripcion, motivo, altaBajaId], (error, results) => {
             if (error) {
                 reject(error);
             } else {
@@ -53,3 +58,4 @@ exports.updateAltaABaja= async (altaBajaId, bajaData) => {
         });
     });
 };
+
