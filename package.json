@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "cross-env NODE_ENV=dev nodemon app.js",
-    "qas": "cross-env NODE_ENV=qas node app.js",
-    "prod": "cross-env NODE_ENV=prod node app.js"
+    "start": "node server.js",
+    "dev": "cross-env NODE_ENV=dev nodemon server.js",
+    "qas": "cross-env NODE_ENV=qas node server.js",
+    "prod": "cross-env NODE_ENV=prod node server.js"
   },
   "keywords": [],
   "author": "",

@@ -11,16 +11,16 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
-/*app.get('/api/saludo', (req, res) => {
-    res.send('Hola, mundo!');
-  });*/
+app.get('/api/saludo', (req, res) => {
+    res.json({ message: "Hola desde el servidor!" });
+  });
 
-app.use('/api/users', userRoutes);
-app.use('/api/empleados', empleadoRoute);
-app.use('/api/hijos-empleado', hijosEmpladoRuote);
-app.use('/api/formacion-empleados', formacionRoute);
-app.use('/api/experienca-empleado', experienciaRoute),
-app.use('/api/altas-bajas-empleado', altaBajaEmpleadoRoute);
+app.use('/users', userRoutes);
+app.use('/empleados', empleadoRoute);
+app.use('/hijos-empleado', hijosEmpladoRuote);
+app.use('/formacion-empleados', formacionRoute);
+app.use('/experienca-empleado', experienciaRoute),
+app.use('/altas-bajas-empleado', altaBajaEmpleadoRoute);
 
 app.use(errorHandler);
 
