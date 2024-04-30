@@ -10,7 +10,7 @@ exports.getAllUsers = async (req, res, next) => {
     }
 };
 
-exports.createUser = async (req, res, next) => {
+exports.createUserH = async (req, res, next) => {
     try {
         const userData= req.body;
         const userId = await UserModel.createUser(userData);
